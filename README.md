@@ -7,6 +7,13 @@
 # 导入
 from model.nn import nnModel
 
+# 将数据转换为PyTorch张量
+X_tensor = torch.tensor(X, dtype=torch.float32)
+y_tensor = torch.tensor(y, dtype=torch.float32)  
+
+# 划分数据集为训练集和测试集
+X_train, X_test, y_train, y_test = train_test_split(X_tensor, y_tensor, test_size=0.2, random_state=42)
+
 # 训练函数
 nnModel.train(X_train, y_train, num_epochs, lr, file_name, lossFile_path)
 # X_train: 训练集特征
